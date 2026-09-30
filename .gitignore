@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.data/
+uploads/
+coverage/
+
+.env.*
+!.env.example
+
+*.sqlite
+*.sqlite-*

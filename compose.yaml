@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    environment:
+      NODE_ENV: production
+      SECURITY_MODE: deployment
+      APP_ORIGIN: ${APP_ORIGIN:?Set HTTPS origin}
+      JWT_SECRET: ${JWT_SECRET:?Set random secret}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-}
+      SQLITE_PATH: /app/.data/secondhand.sqlite
+      HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - secondhand-db:/app/.data
+      - secondhand-uploads:/app/uploads
+volumes:
+  secondhand-db:
+  secondhand-uploads:
